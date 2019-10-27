@@ -7,9 +7,9 @@
     "normit": "./bin/normit"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "checkCov": "istanbul cover _mocha --report lcov && open coverage/lcov-report/index.html"
+    "test": "mocha test",
+    "coveralls": "nyc --reporter=lcov mocha -R spec && cat coverage/lcov.info | coveralls",
+    "checkCov": "nyc --reporter=lcov mocha && open coverage/lcov-report/index.html"
   },
   "repository": {
     "type": "git",
@@ -41,16 +41,16 @@
     "request": "2.37.x"
   },
   "devDependencies": {
-    "coveralls": "2.11.x",
-    "istanbul": "0.3.x",
-    "mocha-lcov-reporter": "0.0.1",
     "chai": "1.9.x",
-    "mocha": "1.20.x",
-    "nock": "0.42.x",
+    "coveralls": "2.11.x",
     "gulp": "3.8.x",
-    "gulp-watch": "0.6.x",
-    "gulp-mocha": "0.5.x",
     "gulp-jshint": "1.7.x",
+    "gulp-mocha": "0.5.x",
+    "gulp-watch": "0.6.x",
+    "mocha": "1.20.x",
+    "mocha-lcov-reporter": "0.0.1",
+    "nock": "0.42.x",
+    "nyc": "^14.1.1",
     "sinon": "1.10.x",
     "sinon-chai": "2.5.x"
   }
