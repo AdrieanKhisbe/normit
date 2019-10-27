@@ -27,15 +27,15 @@ describe('translator', function() {
     nock(HOST).post('/translator/api/Translate/TranslateArray?from=en&to=es')
     .reply(200, translatedResponse);
 
-    nock(HOST).post('/translator/api/language/Speak?locale=es-ES&gender=female&media=audio/mp3&text=burro')
+    nock(HOST).post('/translator/api/language/Speak?locale=es-ES&gender=female&media=audio/mp3&text=Ass')
     .reply(200, '');
 
     sinon.spy(console, 'log');
   });
 
   it('works', function(){
-    tr.run(options).then(function() {
-      expect(console.log).to.have.been.calledWith('=> burro');
+    return tr.run(options).then(function() {
+      expect(console.log).to.have.been.calledWith('=> Ass');
     });
   });
 });
